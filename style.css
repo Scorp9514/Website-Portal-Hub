@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+body{
+    background-color: rgb(27, 22, 22);
+}
+
+#websiteTitle{
+    font-family: "Changa One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    text-align: center;
+    font-size: 80px;
+    margin: 0px 0px;
+    color: azure;
+}
+
+#title{
+    display: flex;
+    justify-content: center;
+}
+
+#plusBtn{
+    width: 7vw;
+    aspect-ratio: 1/1;
+    cursor: pointer;
+    display:block;
+}
