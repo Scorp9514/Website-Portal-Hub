@@ -1,5 +1,26 @@
 @charset "UTF-8";
 
+#plusBtn{
+    border-radius: 50%;
+    width: 5vw;
+    height: auto;
+}
+
 #plusBtn:hover {
-    background-color: aqua;
+    cursor: pointer;
+}
+
+#title{
+    display: flex;
+    justify-content: center;
+    font-family: 'Changa One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 5vw;
+}
+
+#popup{
+    position: absolute;
+    display: none;
+    background:azure;
 }
