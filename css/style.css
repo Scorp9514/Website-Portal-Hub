@@ -4,6 +4,7 @@
     border-radius: 50%;
     width: 5vw;
     height: auto;
+    display: inline-block;
 }
 
 #plusBtn:hover {
@@ -23,4 +24,5 @@
     position: absolute;
     display: none;
     background:azure;
+    width: 10vw;
 }
