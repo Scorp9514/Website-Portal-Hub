@@ -9,18 +9,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Changa+One:ital@0;1&family=Wendy+One&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Changa+One:ital@0;1&family=Delius&family=Wendy+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Changa+One:ital@0;1&family=Delius&family=DynaPuff:wght@400..700&family=Wendy+One&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="title">
-        <span id="websiteTitle">Website Portal Hub</span>
-    </div>
+    <header>
+        <div id="title">
+            <span id="websiteTitle">Website Portal Hub</span>
+        </div>
+    </header>
     
+    <nav>
+        <div class="allPopup">
+            <img src="./assets/plus.png" id="plusBtn">
+            <div id="popup">
+                <span id="addWeb" class="popupText">Add Website</span>
+                <span id="changeBg" class="popupText">Change Background</span>
+            </div>
 
-    <img src="./assets/plus.png" id="plusBtn">
-    <div id="popup">
-        <span id="addWeb">Add Website</span>
-        <span id="changeBg">Change Background</span>
-    </div>
+            
+            <label>
+                <input type="file" id="uploadBg">
+                <span id="uploadBgText">Upload Image</span>
+            </label>
+            
+        </div>
+    </nav>
+    
+    
     <script src="./js/main.js"></script>
 </body>
 </html>
