@@ -19,6 +19,7 @@
     font-style: normal;
     font-weight: 400;
     font-size: 5rem;
+    text-shadow: -0.2rem -0.2rem 0 white, 0.2rem 0.2rem 0 white, -0.2rem 0.2rem 0 white, 0.2rem -0.2rem 0 white;
 }
 
 #popup{
@@ -84,10 +85,16 @@
     font-weight: 400;
     font-style: normal;
     border: solid 4px;
+
+    /* 將自身上移自己高度的15% */
+    transform: translateY(-15%); 
 }
 
 #uploadBgText:hover{
     cursor: pointer;
+    background-color: rgb(37, 126, 62);
+    transition: background-color 0.2s;
+
 }
 
 body{
