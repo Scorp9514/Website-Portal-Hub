@@ -92,8 +92,8 @@
 
 #uploadBgText:hover{
     cursor: pointer;
-    background-color: rgb(37, 126, 62);
-    transition: background-color 0.2s;
+    background-color: rgb(126, 212, 40);
+    transition: background-color 0.5s;
 
 }
 

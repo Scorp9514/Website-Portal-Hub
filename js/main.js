@@ -32,21 +32,20 @@ let db;
 //                          資料庫名稱,資料庫版本號
 const request = indexedDB.open('MyDB',1);
 
+
+// 初始化資料庫時執行 or 試圖開啟版本號更高的資料庫的時候
 request.onupgradeneeded = (e) => {
     db = e.target.result;
     db.createObjectStore('backgroundDB',1);
-    console.log('a');
 };
 
 request.onsuccess = (e) =>{
     db = e.target.result;
     loadImage();
-    console.log('b');
 };
 
 uploadBg.addEventListener('change',()=>{
     const file = uploadBg.files[0];
-    console.log('c');
     if(!file) return;
 
 
@@ -59,7 +58,6 @@ uploadBg.addEventListener('change',()=>{
         reader.onload = (e) =>{
             saveImage(file);
             changeBackground(file);
-            console.log('dfaidjfdsnfoj')
         };
         reader.readAsDataURL(file);
     }
@@ -82,7 +80,6 @@ function saveImage(file){
 //載入之前存進indexedDB的圖片
 
 function loadImage(){
-    console.log('e');
     const tx= db.transaction("images","readonly");
     const req = tx.objectStore("images").get("bgImage");
     req.onsuccess = (e) =>{
@@ -94,13 +91,12 @@ function loadImage(){
 };
 
 function changeBackground(file){
-    console.log('f');
     const url = URL.createObjectURL(file);
     document.body.style.backgroundImage = `url(${url})`; // 反引號才能 {變數}
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundSize = 'cover'; //讓背景布滿整個 viewport
 };
 
-console.log('yooo');
+
 
 
