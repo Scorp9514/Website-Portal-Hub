@@ -31,5 +31,62 @@
 #closeBtn{
     float: right; /* 把按鈕放到右上 */
     cursor: pointer;
+    font-size: 2rem;
 
+
+    font-family: "Changa One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.addWebsiteText{
+    font-family: 'Changa One';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.webInput{
+    font-size: 1rem;
+    font-style: bold;
+    height: 2rem;
+    width: auto;
+    margin-top: -1rem;
+}
+
+#addWebBtn{
+    display: inline-block;
+    background-color: coral;
+    margin-top: 4rem;
+    padding: 1rem 2rem;
+    border: 0.3rem solid rgb(219, 90, 43);
+    font-family: 'Changa One';
+    font-style: normal;
+    font-weight: 400;
+    border-radius: 10%;
+    font-size: 1.5rem;
+}
+
+#addWebBtn:hover{
+    cursor: pointer;
+    background-color: rgb(247, 113, 65);
+}
+
+#webIcon{
+    display: inline-block;
+    background-color: rgb(108, 173, 55);
+    padding: 1rem 2rem;
+    border: 0.3rem solid rgb(67, 110, 32);
+    font-family: 'Changa One';
+    font-style: normal;
+    font-weight: 400;
+    border-radius: 10%;
+    font-size: 1.5rem;
+}
+
+#webIcon:hover{
+    cursor: pointer;
+    background-color: rgb(93, 148, 47);
 }

@@ -5,6 +5,7 @@ const changeBg = document.getElementById('changeBg');
 const uploadBg = document.getElementById('uploadBg');
 const uploadBgText = document.getElementById('uploadBgText');
 
+
 plusBtn.addEventListener('click',()=>{
     const rect = plusBtn.getBoundingClientRect();
     popup.style.left = rect.left + "px";
@@ -36,7 +37,7 @@ const request = indexedDB.open('MyDB',1);
 // 初始化資料庫時執行 or 試圖開啟版本號更高的資料庫的時候
 request.onupgradeneeded = (e) => {
     db = e.target.result;
-    db.createObjectStore('backgroundDB',1);
+    db.createObjectStore('images',1);
 };
 
 request.onsuccess = (e) =>{
@@ -51,7 +52,6 @@ uploadBg.addEventListener('change',()=>{
 
     if (file.type.startsWith('image/')){
         const reader = new FileReader();
-        console.log('breudfn')
         // onload VS onsuccess
         // onload => 載入一般資源 如 img script等很難失敗的東西
         // onsuccess => 載入非凡資源 如 request 成功就觸發
@@ -68,7 +68,6 @@ uploadBg.addEventListener('change',()=>{
 
 function saveImage(file){
     // 向db拿可以讀寫"images"的交易門票
-    console.log('d');
     const tx = db.transaction("images","readwrite");
 
     // 到images存放區把file放進去

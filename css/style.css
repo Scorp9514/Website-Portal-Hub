@@ -20,12 +20,13 @@
     font-weight: 400;
     font-size: 5rem;
     text-shadow: -0.2rem -0.2rem 0 white, 0.2rem 0.2rem 0 white, -0.2rem 0.2rem 0 white, 0.2rem -0.2rem 0 white;
+    text-align: center;
 }
 
 #popup{
     position: relative;
     display: none;
-    background:azure;
+    /* background:azure; */
     width: 10vw;
     
 }
@@ -43,27 +44,27 @@
 
 #addWeb:hover{
     cursor: pointer;
-    background-color: rgb(175, 174, 174);
-    transition: background-color 0.7s;
+    background-color: rgb(218, 217, 217);
     
 }
 
 #addWeb{
     padding:5%;
+    background-color: azure;
     font-size: 1.5rem;
     text-align: center;
 }
 
 #changeBg{
     padding:5%;
+    background-color: azure;
     font-size: 1.5rem;
     text-align: center;
 }
 
 #changeBg:hover{
     cursor: pointer;
-    background-color: rgb(175, 174, 174);
-    transition: background-color 0.5s;
+    background-color: rgb(218, 217, 217);
     
 }
 
@@ -94,9 +95,5 @@
     cursor: pointer;
     background-color: rgb(126, 212, 40);
     transition: background-color 0.5s;
-
 }
 
-body{
-    
-}
