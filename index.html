@@ -36,18 +36,22 @@
             
         </div>
         <div id="addWebsiteMunu" class="addWebsiteMunu">
-            <div class="menu-content">
+            <form class="menu-content" id="addWebForm">
                 <!-- html實體 顯示"X" -->
                 <span id="closeBtn">X</span>
                 <p class="addWebsiteText">Link</p>
-                <input type="text" id="webLink" class="webInput">
+                <input type="text" id="webLink" class="webInput" name="siteLink">
                 <p class="addWebsiteText">Name</p>
-                <input type="text" id="webName" class="webInput">
+                <input type="text" id="webName" class="webInput" name="siteName">
                 <p class="addWebsiteText">Icon</p>
-                <span id="webIcon">Upload</span>
+                <label>
+                    <span id="webIcon">Upload</span>
+                    <input type="file" id="uploadIcon" name="siteIcon">
+                </label>
+                
                 <br>
-                <span id="addWebBtn">Add</span>
-            </div>
+                <button type="submit" id="addWebBtn">Add</button>
+            </form>
             
 
         </div>

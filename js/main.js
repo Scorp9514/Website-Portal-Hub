@@ -1,12 +1,10 @@
-const plusBtn = document.getElementById('plusBtn');
 const popup = document.getElementById('popup');
 const addWeb = document.getElementById('addWeb');
-const changeBg = document.getElementById('changeBg');
 const uploadBg = document.getElementById('uploadBg');
 const uploadBgText = document.getElementById('uploadBgText');
 
 
-plusBtn.addEventListener('click',()=>{
+document.getElementById('plusBtn').addEventListener('click',()=>{
     const rect = plusBtn.getBoundingClientRect();
     popup.style.left = rect.left + "px";
     
@@ -16,7 +14,7 @@ plusBtn.addEventListener('click',()=>{
     uploadBgText.style.display = popup.style.display === 'none'?'none' : 'none';
 });
 
-changeBg.addEventListener('click',()=>{
+document.getElementById('changeBg').addEventListener('click',()=>{
     const uploadBg = document.getElementById('uploadBg');
     uploadBg.left = changeBg.left + "px";
     uploadBg.top = changeBg.top + 'px';
@@ -26,7 +24,7 @@ changeBg.addEventListener('click',()=>{
 
 
 
-// 處理用戶上傳的background檔案
+// 處理用戶上傳的background檔案ss
 
 let db;
 
