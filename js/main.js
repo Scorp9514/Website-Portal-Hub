@@ -10,8 +10,9 @@ document.getElementById('plusBtn').addEventListener('click',()=>{
     
     popup.style.display = popup.style.display === "inline-block" ? "none" : "inline-block";
     const popupDisplay = window.getComputedStyle(popup).display;
-    // uploadBgText.display = popupDisplay;
-    uploadBgText.style.display = popup.style.display === 'none'?'none' : 'none';
+    if (popup.style.display ==='none'){
+        uploadBgText.style.display = 'none';
+    }
 });
 
 document.getElementById('changeBg').addEventListener('click',()=>{

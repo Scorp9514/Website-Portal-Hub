@@ -12,6 +12,7 @@ add_website.onclick = () => {
 
 closeBtn.onclick = () =>{
     addWebsiteMunu.style.display = 'none';
+    document.getElementById('addWebForm').reset();
 };
 
 
@@ -21,10 +22,19 @@ closeBtn.onclick = () =>{
 
 let addWebDB;
 
-const webDBreq1 = indexedDB.open("links",1);
-const webDBreq2 = indexedDB.open("names",1);
-const webDBreq3 = indexedDB.open("icons",1);
+const webDBreq = indexedDB.open('websites',1);
 
+webDBreq.onupgradeneeded = (e) =>{
+    addWebDB = e.target.result;
+    if(!data.objectStoreNames.contains("records")){
+        data.createObjectStore("records",{keypath: 'id',autoIncrement: true}); //建立key叫"id"的資料庫 id在放東西進去後自動更新 ex:1,2,3...
+    }
+};
+
+webDBreq.onsuccess = (e)=>{
+    addWebDB = e.target.result;
+    loadWebsites();
+};
 
 addWebBtn.onclick = () =>{
     const website_link = webLink.value;
@@ -40,6 +50,8 @@ webIcon.addEventListener("change",()=>{
     
 });
 
+
+//用戶嘗試新增一個網站
 document.getElementById('addWebForm').addEventListener('submit',(e)=>{
     
     e.preventDefault(); //防止submit後網頁重新整理
@@ -50,24 +62,44 @@ document.getElementById('addWebForm').addEventListener('submit',(e)=>{
 
 });
 
+
+//確認資料validation&把資料存進DB
+
 function handleData(webFormData){
     const link = webFormData.get("siteLink"); // 根據input裡面的name屬性拿到用戶輸入的字
-    console.log(link);
+    // console.log(link);
     const name = webFormData.get("siteName");
-    console.log(name);
+    // console.log(name);
 
     const imageFile = webFormData.get("siteIcon");
-    console.log(imageFile);
+    
+    //開啟DB
+    const tran = addWebDB.transaction('records',"readwrite");
+    const store = tran.objectStore("records"); 
 
-    if (imageFile){
-        const imgReader = new FileReader();
-        imgReader.onload=()=>{
-            console.log("a",imgReader.result);
-        };
-        imgReader.readAsDataURL(imageFile);
-    };
-
+    
+    // 確認用戶輸入的資料沒問題後加到records資料庫
+    if (tran.oncomplete){
+        console.log('adfuadfnisadufnidsnfisadn');
+    }
+    if (link && name && imageFile.type.startsWith("image/")){
+        store.add({lk: link,nm: name,img:imageFile});
+        console.log('form data fetched');
+        document.getElementById('addWebForm').reset();
+        loadWebsites();
+    }
+    document.getElementById('addWebForm').reset();
+    
 };
 
+function loadWebsites(){
+    const tran = addWebDB.transaction('records','readonly');
+    const store = tran.objectStore("records");
+    const openStoreReq = store.getAll();
+
+    openStoreReq.onsuccess = () =>{
+        
+    };
+};
 
 
