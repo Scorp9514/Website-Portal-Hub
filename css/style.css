@@ -10,7 +10,7 @@ html,body{
     width: 5vw;
     height: auto;
     /* display: inline-block; */
-    margin-top: 20px;
+    margin-top: 20px;    
 }
 
 #plusBtn:hover {

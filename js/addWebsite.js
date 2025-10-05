@@ -13,6 +13,11 @@ add_website.onclick = () => {
 closeBtn.onclick = () =>{
     addWebsiteMunu.style.display = 'none';
     document.getElementById('addWebForm').reset();
+
+
+    //測試
+    const del = indexedDB.deleteDatabase('websites');
+    del.onsuccess = () => console.log('websites DB deleted');
 };
 
 
@@ -25,9 +30,10 @@ let addWebDB;
 const webDBreq = indexedDB.open('websites',1);
 
 webDBreq.onupgradeneeded = (e) =>{
+    //確保DB打開了
     addWebDB = e.target.result;
-    if(!data.objectStoreNames.contains("records")){
-        data.createObjectStore("records",{keypath: 'id',autoIncrement: true}); //建立key叫"id"的資料庫 id在放東西進去後自動更新 ex:1,2,3...
+    if(!addWebDB.objectStoreNames.contains("records")){
+        addWebDB.createObjectStore("records",{keyPath: "id",autoIncrement: true}); //建立key叫"id"的資料庫 id在放東西進去後自動更新 ex:1,2,3...
     }
 };
 
@@ -97,9 +103,61 @@ function loadWebsites(){
     const store = tran.objectStore("records");
     const openStoreReq = store.getAll();
 
-    openStoreReq.onsuccess = () =>{
+    openStoreReq.onsuccess = (e) =>{
+        const recs = e.target.result;
+        console.log(recs)
+        const addingDiv = document.getElementById('addedWebs');
         
+        // 重置後再加存進去的網站
+        addingDiv.innerHTML = "";
+
+        // for record in recs:
+        recs.forEach(record => {
+            //每個網站一個wrapper
+            const wrapper = document.createElement('div');
+            wrapper.style.display = 'inline-block';
+            wrapper.style.margin = '2rem 2rem';
+
+            //固定網站大小
+            wrapper.style.width = '5vw';
+            wrapper.style.height = 'auto';
+
+
+            // 創造一個新的img元素 再創造一個url放到src裡面 把img丟進wrapper
+            const a = document.createElement('a');
+            a.href = record.lk;
+            a.target = "_blank";
+            const icon = document.createElement('img');
+            icon.src = URL.createObjectURL(record.img);
+            a.appendChild(icon)
+            wrapper.appendChild(a);
+            console.log(record.nm);
+            const nme = document.createElement('span');
+            nme.textContent = record.nm;
+            nme.style.fontSize = "2rem";
+            wrapper.appendChild(a);
+            
+
+            //新增刪除按鈕並綁定刪除事件
+            const delWeb = document.createElement('button');
+            delWeb.textContent = "Delete";
+            delWeb.onclick = () => deleteRecord(record.id);
+            wrapper.appendChild(delWeb)
+
+
+            addingDiv.appendChild(wrapper);
+
+        });
     };
 };
 
+
+function deleteRecord(id) {
+    const trans = addWebDB.transaction('records','readwrite');
+    const recor = trans.objectStore('records');
+    console.log(id);
+    recor.delete(id);
+
+    trans.oncomplete = () => loadWebsites();
+};
 

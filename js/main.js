@@ -36,7 +36,7 @@ const request = indexedDB.open('MyDB',1);
 // 初始化資料庫時執行 or 試圖開啟版本號更高的資料庫的時候
 request.onupgradeneeded = (e) => {
     db = e.target.result;
-    db.createObjectStore('images',1);
+    db.createObjectStore('images',{keypath: "bgImage"});
 };
 
 request.onsuccess = (e) =>{
