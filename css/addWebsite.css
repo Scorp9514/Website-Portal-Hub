@@ -90,3 +90,12 @@
     cursor: pointer;
     background-color: rgb(93, 148, 47);
 }
+
+#addedWebs{
+    display: flex;
+
+    /* 讓各個網站先排滿一整個row才換行 */
+    align-items: center;
+    flex-wrap: wrap;
+
+}

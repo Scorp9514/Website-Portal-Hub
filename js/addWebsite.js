@@ -117,10 +117,14 @@ function loadWebsites(){
             const wrapper = document.createElement('div');
             wrapper.style.margin = '2rem 2rem';
 
+            const inner = document.createElement('div');
+
             //置中name
-            wrapper.style.display = 'flex';
-            wrapper.style.flexDirection = 'column';
-            wrapper.style.alignItems = 'center';
+            inner.style.display = 'flex';
+            inner.style.flexDirection = 'column';
+            inner.style.justifyContent = 'center';
+            inner.style.alignItems = 'center';
+
             //固定網站大小
 
 
@@ -136,22 +140,25 @@ function loadWebsites(){
             icon.style.overflow = "cover";
             icon.style.borderRadius = "50%";
             a.appendChild(icon)
-            wrapper.appendChild(a);
+            inner.appendChild(a);
             console.log(record.nm);
             const nme = document.createElement('span');
             nme.textContent = record.nm;
             nme.style.fontSize = "2rem";
             nme.style.fontFamily = "Changa One";
             nme.style.textShadow = "-0.2rem -0.2rem 0 white, 0.2rem 0.2rem 0 white, -0.2rem 0.2rem 0 white, 0.2rem -0.2rem 0 white";
-            wrapper.appendChild(nme);
+            inner.appendChild(nme);
             
 
             //新增刪除按鈕並綁定刪除事件
             const delWeb = document.createElement('button');
             delWeb.textContent = "Delete";
+            delWeb.fontSize = '1rem';
+            delWeb.padding = '2rem 1rem';
             delWeb.style.width = '5vw';
             delWeb.onclick = () => deleteRecord(record.id);
-            wrapper.appendChild(delWeb)
+            inner.appendChild(delWeb);
+            wrapper.appendChild(inner);
 
 
             addingDiv.appendChild(wrapper);
