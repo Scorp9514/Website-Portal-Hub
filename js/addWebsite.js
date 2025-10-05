@@ -15,9 +15,9 @@ closeBtn.onclick = () =>{
     document.getElementById('addWebForm').reset();
 
 
-    //測試
-    const del = indexedDB.deleteDatabase('websites');
-    del.onsuccess = () => console.log('websites DB deleted');
+    // //測試
+    // const del = indexedDB.deleteDatabase('websites');
+    // del.onsuccess = () => console.log('websites DB deleted');
 };
 
 
@@ -115,12 +115,14 @@ function loadWebsites(){
         recs.forEach(record => {
             //每個網站一個wrapper
             const wrapper = document.createElement('div');
-            wrapper.style.display = 'inline-block';
             wrapper.style.margin = '2rem 2rem';
 
+            //置中name
+            wrapper.style.display = 'flex';
+            wrapper.style.flexDirection = 'column';
+            wrapper.style.alignItems = 'center';
             //固定網站大小
-            wrapper.style.width = '5vw';
-            wrapper.style.height = 'auto';
+
 
 
             // 創造一個新的img元素 再創造一個url放到src裡面 把img丟進wrapper
@@ -129,18 +131,25 @@ function loadWebsites(){
             a.target = "_blank";
             const icon = document.createElement('img');
             icon.src = URL.createObjectURL(record.img);
+            icon.style.width = "7vw";
+            icon.style.height = '7vw';
+            icon.style.overflow = "cover";
+            icon.style.borderRadius = "50%";
             a.appendChild(icon)
             wrapper.appendChild(a);
             console.log(record.nm);
             const nme = document.createElement('span');
             nme.textContent = record.nm;
             nme.style.fontSize = "2rem";
-            wrapper.appendChild(a);
+            nme.style.fontFamily = "Changa One";
+            nme.style.textShadow = "-0.2rem -0.2rem 0 white, 0.2rem 0.2rem 0 white, -0.2rem 0.2rem 0 white, 0.2rem -0.2rem 0 white";
+            wrapper.appendChild(nme);
             
 
             //新增刪除按鈕並綁定刪除事件
             const delWeb = document.createElement('button');
             delWeb.textContent = "Delete";
+            delWeb.style.width = '5vw';
             delWeb.onclick = () => deleteRecord(record.id);
             wrapper.appendChild(delWeb)
 
